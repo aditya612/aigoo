@@ -1,9 +1,6 @@
 """Setup script for dope"""
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+import setuptools
 from codecs import open
 import sys
 
@@ -16,9 +13,9 @@ with open("README.md", encoding="utf-8") as file:
 
 
 # This call to setup() does all the work
-setup(
+setuptools.setup(
     name="dope",
-    version="1.0.0",
+    version="0.1.0",
     description="Read the latest Real Python tutorials",
     # long_description=readme,
     # long_description_content_type="text/markdown",
@@ -35,12 +32,13 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python"
     ],
-    packages=["dope"],
+    # packages=["dope"],
+    packages=setuptools.find_packages(),
     include_package_data=True,
 
-    entry_points={"console_scripts": ["dope = dope.dope:main"]},
+    # entry_points={"console_scripts": ["dope = dope.dope:main"]},
     install_requires=["BeautifulSoup4", "requests",
-                      "urllib3", "tkinter", "numpy", "pandas"],
+                      "urllib3", "tk", "numpy", "pandas"],
     requires=["BeautifulSoup4", "requests",
-              "urllib3", "tkinter", "numpy", "pandas"],
+              "urllib3", "tk", "numpy", "pandas"],
 )

@@ -156,7 +156,7 @@ def execute(command):
 gurl = []
 
 
-def app(result):
+def app(r):
     def selectItem(a):
         curItem = tree.focus()
         # print(tree.item(curItem))
@@ -168,7 +168,7 @@ def app(result):
         # print(gurl)
         get_question_and_answers(gurl)
 
-    m = result
+    m = r
     main1 = []
     l = []
     for _ in range(len(m)):
@@ -262,6 +262,7 @@ def get_question_and_answers(url):
 
 
 def main(args):
+    # args = sys.argv[1:]
     if not args:
         args = ["-"]
     if args[0] == "-" or args[0] == '-h' or args[0] == '--help':
@@ -273,6 +274,7 @@ def main(args):
             print(f"Sorry, Dope doesn't support this file type.")
             return
         file_path = args[0]
+        # print(file_path)
         # Compiles the file and pipes stdout
         output, error = execute([language] + [file_path])
         if (output, error) == (None, None):  # Invalid file
@@ -301,4 +303,3 @@ def main(args):
         else:
             print(f"No error detected :)")
     return
-
