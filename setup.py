@@ -1,4 +1,4 @@
-"""Setup script for dope"""
+"""Setup script for aigoo"""
 
 import setuptools
 from codecs import open
@@ -14,9 +14,9 @@ with open("README.md", encoding="utf-8") as file:
 
 # This call to setup() does all the work
 setuptools.setup(
-    name="dope",
-    version="0.1.0",
-    description="Read the latest Real Python tutorials",
+    name="aigoo",
+    version="0.0.1",
+    description="Compiler error solution",
     # long_description=readme,
     # long_description_content_type="text/markdown",
     url="https://github.com/aditya612/dope",
@@ -32,11 +32,11 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python"
     ],
-    # packages=["dope"],
-    packages=setuptools.find_packages(),
+    packages=["aigoo"],
+    # packages=setuptools.find_packages(),
     include_package_data=True,
 
-    # entry_points={"console_scripts": ["dope = dope.dope:main"]},
+    entry_points={"console_scripts": ["aigoo = aigoo.aigoo:main"]},
     install_requires=["BeautifulSoup4", "requests",
                       "urllib3", "tk", "numpy", "pandas"],
     requires=["BeautifulSoup4", "requests",

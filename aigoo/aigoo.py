@@ -13,8 +13,9 @@ from subprocess import PIPE, Popen
 from threading import Thread
 
 SEARCH_URL = "https://stackoverflow.com"
+# SEARCH_URL = "https://codereview.stackexchange.com/"
 USAGE = (f"Usage: {sys.argv[0]} "
-         "[--help] | python dope.py [file_name | file_path]")
+         "[--help] | python aigoo.py [file_name | file_path]")
 
 
 def get_search_results(soup):
@@ -54,7 +55,7 @@ def souper(url):
         return BeautifulSoup(html.text, "html.parser")
 
 
-def search_stackoverflow(query):
+def search(query):
     """Wrapper function for get_search_results."""
     soup = souper(SEARCH_URL + "/search?pagesize=50&q=%s" %
                   query.replace(' ', '+'))
@@ -112,7 +113,7 @@ def execute(command):
     )
 
     output, errors = [], []
-    pipe_queue = Queue()  # Wowee, thanks CS 225
+    pipe_queue = Queue()
 
     # Threads for reading stdout and stderr pipes and pushing to a shared queue
     stdout_thread = Thread(target=read, args=(
@@ -271,7 +272,7 @@ def main(args):
         language = get_language(args[0])  # Gets the language name
 
         if language == '':  # Unknown language
-            print(f"Sorry, Dope doesn't support this file type.")
+            print(f"Sorry,  doesn't support this file type.")
             return
         file_path = args[0]
         # print(file_path)
@@ -279,13 +280,11 @@ def main(args):
         output, error = execute([language] + [file_path])
         if (output, error) == (None, None):  # Invalid file
             return
-
         # Prepares error message for search
         error_msg = get_error_message(error, language)
         if error_msg != None:
             query = f'{language} {error_msg}'
-            search_results, captcha = search_stackoverflow(query)
-
+            search_results, captcha = search(query)
             if search_results != []:
                 if captcha:
                     print(
@@ -295,7 +294,6 @@ def main(args):
                 # print(search_results)
                 # printlinks(search_results)  # Opens interface
                 else:
-
                     app(search_results)
                     # print(search_results)
             else:
