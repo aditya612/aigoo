@@ -36,7 +36,7 @@ setuptools.setup(
     # packages=setuptools.find_packages(),
     include_package_data=True,
 
-    entry_points={"console_scripts": ["aigoo = aigoo.aigoo:main"]},
+    entry_points={"console_scripts": ["aigoo = aigoo.aigoo:__main__"]},
     install_requires=["BeautifulSoup4", "requests",
                       "urllib3", "tk", "numpy", "pandas"],
     requires=["BeautifulSoup4", "requests",

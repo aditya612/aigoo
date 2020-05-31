@@ -262,7 +262,8 @@ def get_question_and_answers(url):
         r1.mainloop()
 
 
-def main(args):
+def main():
+    args = sys.argv[1:]
     # args = sys.argv[1:]
     if not args:
         args = ["-"]
