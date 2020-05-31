@@ -15,7 +15,7 @@ with open("README.md", encoding="utf-8") as file:
 # This call to setup() does all the work
 setuptools.setup(
     name="aigoo",
-    version="0.0.1",
+    version="0.0.2",
     description="Compiler error solution",
     # long_description=readme,
     # long_description_content_type="text/markdown",
